@@ -26,9 +26,9 @@ semantic token is for high-level definition. It abstracts the token by giving it
 
 ## Content Type
 
-KDT is set of multiple token definitions(`$`) and exprssions(`%`). Its file extension should be `.kdt` and its media type should be `application/design-tokens+kdt`.
+KDT is set of multiple token definitions(`$`) and macros(`%`). Its file extension should be `.kdt` and its media type should be `application/design-tokens+kdt`.
 
-KDT can be serialized to text. Definitions in the serialized text can hold all information design token schema and actual values, but expressions can be ignored by runtime.
+KDT can be serialized to text. Definitions in the serialized text can hold all information design token schema and actual values, but macros can be ignored by runtime.
 
 ## Language Concepts
 
