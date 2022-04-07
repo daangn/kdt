@@ -1,6 +1,6 @@
 # KDT Specification
 
-Specification for KDT and its language.
+Specification for KDT language.
 
 ## What is Design Token?
 
