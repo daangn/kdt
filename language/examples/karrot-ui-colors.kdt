@@ -1,0 +1,53 @@
+%kdt:set(theme=light)
+
+$scale.color.carrot-50  -> #fff5f0
+$scale.color.carrot-100 -> #ffe2d2
+$scale.color.carrot-200 -> #ffd2b9
+$scale.color.carrot-300 -> #ffbc97
+$scale.color.carrot-400 -> #ff9366
+$scale.color.carrot-500 -> #ff7e36
+$scale.color.carrot-600 -> #fa6616
+$scale.color.carrot-700 -> #f05705
+$scale.color.carrot-800 -> #cc4700
+$scale.color.carrot-900 -> #b44104
+$scale.color.carrot-950 -> #a03a03
+
+$scale.color.blue-50  -> #ebf7fa
+$scale.color.blue-100 -> #c0e1eb
+$scale.color.blue-800 -> #0a85b5
+$scale.color.blue-950 -> #0f698c
+
+%kdt:set(theme=dark)
+
+$scale.color.carrot-50  -> #7a3814
+$scale.color.carrot-100 -> #974011
+$scale.color.carrot-200 -> #bf4c0d
+$scale.color.carrot-300 -> #d15715
+$scale.color.carrot-400 -> #e96017
+$scale.color.carrot-500 -> #ed7735
+$scale.color.carrot-600 -> #ee9561
+$scale.color.carrot-700 -> #edb08e
+$scale.color.carrot-800 -> #edc4ad
+$scale.color.carrot-900 -> #edd3c4
+$scale.color.carrot-950 -> #ede4e0
+
+$scale.color.blue-50  -> #055575
+$scale.color.blue-100 -> #0c7eab
+$scale.color.blue-800 -> #bad2d9
+$scale.color.blue-950 -> #dbe6e9
+
+%kdt:set(theme=*)
+
+$semantic.color.primary ?? 가장 중요한, 눈에 잘 띄는, 활성 등 UI 전반의 주요 요소에 사용합니다
+
+$semantic.color.primary-container ?? 주요 색상(Primary)의 약한 강조로, 주요 영역을 표기할 때 사용합니다
+$semantic.color.primary-container -> $scale(theme=light).color.carrot50  
+$semantic.color.primary-container -> $scale(theme= dark).color.carrot950 
+
+$semantic.color.secondary ?? 주요 색상(Primary)을 대체하거나 보조합니다.
+$semantic.color.secondary ->$scale(theme=light).color.blue800
+$semantic.color.secondary ->$scale(theme= dark).color.blue200
+
+$semantic.color.secondary-container ?? 보조 영역에 사용합니다.
+$semantic.color.secondary-container -> $scale(theme=light).color.blue50
+$semantic.color.secondary-container -> $scale(theme= dark).color.blue950
