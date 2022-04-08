@@ -12,15 +12,13 @@ KDT is a language for describing and managing design tokens.
 
 ## Structure
 
-KDT defines three types of tokens, **"scale tokens"**, **"static tokens"**, and **"semantic tokens"**.
+KDT defines two types of tokens, **"scale tokens"** and **"semantic tokens"**.
 
-scale (and static) token is for low-level definition.
+The scale token is for low-level definition. Its purpose of the scale token is to define a finite number symbols and make it platform-agnostic by hiding display details behind of it.
 
-The purpose of scale tokens is to define a finite number symbols and make it platform-agnostic by hiding display details behind of it.
+The value bound to the scale token may depends on application context or user preferences. If it always need a fixed value regardless of context, you can define it as a **static token**.
 
-The value bound to the scale token may depends on application context or user preferences. If it always need a fixed value regardless of context, you can define a static token.
-
-semantic token is for high-level definition. It abstracts the token by giving it a unique meaning so designers and others can have same language.
+The semantic token is for high-level definition. It abstracts the token by giving it a unique meaning so designers and developers can have same language.
 
 ![Overview of design token strcucture](docs/images/overview.png)
 
@@ -107,11 +105,13 @@ $scale(theme=light).color.carrot-500 -> #ff7e36
 $scale(theme= dark).color.carrot-500 -> #ed7735
 ```
 
-Sometimes you need token that have a fixed value regardless the context. You can have "static" token for that.
+Sometimes you need token that have a fixed value regardless the context. You can mark it as "static".
 
 ```
 $static.color.white -> #fff;
 ```
+
+The `$static` is semantically equivalent to a `$scale(*)`, but it is defined in a separate namespace so that it can have a name that is duplicated with a scale token.
 
 ### Semantic Token Definitions (`$semantic`)
 
@@ -138,9 +138,9 @@ $semantic.color.background -> $scale(theme=dark).color.gray-100
 $semantic.color.background -> $static.color.white
 ```
 
-### Description Binding
+### Token Description
 
-User can leave a single line of comment on a specific token using `??` operator.
+You can leave a single line of comment on a specific token using `??` operator.
 
 ```
 $semantic.color.primary ?? This is primary color
@@ -148,17 +148,50 @@ $semantic.color.primary ?? This is primary color
 
 The description of every node is initialized to an empty string in the absence of an explicit binding.
 
+## Design Token Scheme
+
+Scheme is the source of truth, an intepreter including all information about the confirmed design tokens.
+
+The AST of KDT is converted to a scheme to be used.
+
+WIP:
+
+```ts
+type ScaleTokenDefinition = {
+  type: 'scale' | 'static',
+  description: string,
+  deprecated: boolean,
+};
+
+type SemanticTokenDefinition = {
+  type: 'semantic',
+  description: string,
+  deprecated: boolean,
+};
+```
+
+### Resolving Value of a Semantic Token
+
+A semantic token is defined as a composition of different scale tokens.
+
+Only one value per scale target can be reflected in the actual program. The condition always chooses the more specific one declared last.
+
+TBD
+
 ## Extensions & Macros (`%`)
 
 KDT can direct additional runtime behavior via macros. Macros are defined as `%{extension}:{name}({arguments})`.
 
-Macros are extended with user extensions based on runtime requirements. only `kdt` extension is reserved.
+Macros are extended with user extensions based on runtime requirements. only `KDT` extension is reserved.
 
 ### Pre-defined extension
 
 KDT:
 
-- `%kdt:set(exp)`: Specifies the default condition to be used by subsequent scale token definitions.
+KDT is built-in, and is the only extension can transforms the scheme. The scheme retained as read-only for all other extensions. It may be included in the syntax later.
+
+- `%KDT:scale(cond)`: Specifies the default condition to be used by subsequent scale token definitions.
+- `%KDT:deprecate(token)`: Mark a specific token has been deprecated.
 
 ### Example extension for Figma
 
