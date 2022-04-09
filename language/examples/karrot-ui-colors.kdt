@@ -41,13 +41,13 @@ $scale.color.blue-950 -> #dbe6e9
 $semantic.color.primary ?? 가장 중요한, 눈에 잘 띄는, 활성 등 UI 전반의 주요 요소에 사용합니다
 
 $semantic.color.primary-container ?? 주요 색상(Primary)의 약한 강조로, 주요 영역을 표기할 때 사용합니다
-$semantic.color.primary-container -> $scale(theme=light).color.carrot50  
-$semantic.color.primary-container -> $scale(theme= dark).color.carrot950 
+$semantic.color.primary-container -> $scale(theme=light).color.carrot-50  
+$semantic.color.primary-container -> $scale(theme= dark).color.carrot-950 
 
 $semantic.color.secondary ?? 주요 색상(Primary)을 대체하거나 보조합니다.
-$semantic.color.secondary ->$scale(theme=light).color.blue800
-$semantic.color.secondary ->$scale(theme= dark).color.blue200
+$semantic.color.secondary -> $scale(theme=light).color.blue-800
+$semantic.color.secondary -> $scale(theme= dark).color.blue-200
 
 $semantic.color.secondary-container ?? 보조 영역에 사용합니다.
-$semantic.color.secondary-container -> $scale(theme=light).color.blue50
-$semantic.color.secondary-container -> $scale(theme= dark).color.blue950
+$semantic.color.secondary-container -> $scale(theme=light).color.blue-50
+$semantic.color.secondary-container -> $scale(theme= dark).color.blue-950

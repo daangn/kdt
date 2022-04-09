@@ -20,7 +20,7 @@ The value bound to the scale token may depends on application context or user pr
 
 The semantic token is for high-level definition. It abstracts the token by giving it a unique meaning so designers and developers can have same language.
 
-![Overview of design token strcucture](docs/images/overview.png)
+![Overview of KDT strcucture](docs/images/overview.png)
 
 ## Content Type
 
@@ -61,7 +61,6 @@ Scale tokens can be declared as `{prefix}.{target}.{name}`.
 - `name` is *unique* id, can contain alphanumeric, and `-`.
 
 ```
-
 $scale.color.carrot-100
 $scale.color.carrot-200
 $scale.color.carrot-300
@@ -87,7 +86,7 @@ The available value bindings depend on the target.
 |:------------- |:------------------------------------------------------------------------------- |
 | `color`       | hex (`#FFFFFF`), RGB (`rgb(255, 255, 255)`), RGBA(`rgba(255, 255, 255, 1.0)`)   |
 | `opacity`     | percentage (`70%`)                                                              |
-| `font-family` | quoted string
+| `font-family` | quoted string                                                                   |
 | `font-size`   | integers (pt)                                                                   |
 | `font-weight` | `thin`, `regular`, `bold`                                                       |
 | `line-height` | integers (pt), percentage (`70%`)                                               |
@@ -105,7 +104,19 @@ $scale(theme=light).color.carrot-500 -> #ff7e36
 $scale(theme= dark).color.carrot-500 -> #ed7735
 ```
 
-Sometimes you need token that have a fixed value regardless the context. You can mark it as "static".
+You can combining multiple conditions, separate them with `,` and list them.
+
+```
+$scale(theme=dark,contrast=high).color.carrot-500 -> #ed7735
+```
+
+Specify `*` to value to select all values (= no select) for a particular condition. This is the default for all implicit condition.
+
+```
+$scale(theme=light,contrast=*).color.carrot-500 -> #ff7e36
+```
+
+Sometimes you need token that always have a fixed value regardless the context. You can define it as "static token".
 
 ```
 $static.color.white -> #fff;
