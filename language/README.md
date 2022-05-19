@@ -50,6 +50,12 @@ This helps design token integration with the native workflow of design tools wit
 
 ![Example: Using KDT in Figma frames](docs/images/kdt-in-figma.png)
 
+Instead of requiring storage to store JSON objects, KDTs can be stored as just components.
+
+It's completely normal to have a single-line readable definition for the component name. And design tools support sharing and synchronizing components. 
+
+By leveraging the component workflows natively supported by design tools, we can achieve more with less.
+
 ### Domain-specific
 
 Instead of being compatible with every possible cases, KDT focuses more on the real problem. That means KDT would have some opinions on how to define and to manage design tokens.
@@ -280,7 +286,8 @@ DescribeOperator = "?"
 
 ## Questions (may unresolved)
 
-TBD
+- How a extension handles deprecation of a token.
+- When a token is renamed, the KDT cannot notify the change. But extensions may need a way to recognize and handle them.
 
 ## References
 
