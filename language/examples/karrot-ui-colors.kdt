@@ -1,4 +1,4 @@
-%KDT:scale(theme=light)
+%KDT:color(theme-light)
 
 $scale.color.carrot-50  -> #fff5f0
 $scale.color.carrot-100 -> #ffe2d2
@@ -17,7 +17,7 @@ $scale.color.blue-100 -> #c0e1eb
 $scale.color.blue-800 -> #0a85b5
 $scale.color.blue-950 -> #0f698c
 
-%KDT:scale(theme=dark)
+%KDT:color(theme-dark)
 
 $scale.color.carrot-50  -> #7a3814
 $scale.color.carrot-100 -> #974011
@@ -36,7 +36,7 @@ $scale.color.blue-100 -> #0c7eab
 $scale.color.blue-800 -> #bad2d9
 $scale.color.blue-950 -> #dbe6e9
 
-%KDT:scale(theme=*)
+%KDT:color(*)
 
 $semantic.color.primary ?? 가장 중요한, 눈에 잘 띄는, 활성 등 UI 전반의 주요 요소에 사용합니다
 
